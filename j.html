@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f3f4f6;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        .progress-container {
+            width: 80%;
+            background-color: #e0e0e0;
+            border-radius: 25px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            width: 0; /* 初始宽度为0 */
+            height: 30px;
+            background-color: #4caf50;
+            border-radius: 25px;
+            transition: width 0.4s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            position: absolute;
+            width: 100%;
+            top: 0; /* 使文字显示在进度条上方 */
+            font-weight: bold;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+        <div class="progress-text" id="progressText">0%</div>
+    </div>
+
+    <script>
+        let width = 0;
+        const progressBar = document.getElementById('progressBar');
+        const progressText = document.getElementById('progressText');
+
+        const interval = setInterval(() => {
+            if (width >= 100) {
+                clearInterval(interval);
+                // 2秒后跳转到致谢页面
+                setTimeout(() => {
+                    window.location.href = '致谢.html';
+                }, 1000);
+            } else {
+                width++;
+                progressBar.style.width = width + '%';
+                progressText.textContent = width + '%';
+            }
+        }, 1); // 每20毫秒更新一次进度
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            animation: backgroundAnimation 10s infinite alternate;
+        }
+
+        @keyframes backgroundAnimation {
+            0% {
+                background: linear-gradient(45deg, #ff6a6a, #ff6a6a);
+            }
+            25% {
+                background: linear-gradient(45deg, #ff6a6a, #fffa6a);
+            }
+            50% {
+                background: linear-gradient(45deg, #fffa6a, #6aff6a);
+            }
+            75% {
+                background: linear-gradient(45deg, #6aff6a, #6afa6a);
+            }
+            100% {
+                background: linear-gradient(45deg, #6afa6a, #6afffa);
+            }
+        }
+
+        .content {
+            color: white;
+            font-size: 2em;
+            text-align: center;
+            z-index: 1; /* 确保文字在背景之上 */
+        }
+    </style>
+</head>
+</html>
